@@ -62,6 +62,7 @@ else
  do
     echo "Archiving files: $line"
     zip -r "$DESTINATION_DIR/$(basename "$line").zip" # It will archive the files line by line
+    rm -rf $line 
  done <<< $FILES_TO_ARCHIVE
 fi
 
