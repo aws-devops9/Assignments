@@ -17,10 +17,10 @@ read SOURCE_DIRECTORY
 
 if [ ! -d $SOURCE_DIRECTORY ]
 then
-    echo "$R ERROR..$NInvalid $SOURCE_DIRECTORY."
+    echo -e "$R ERROR..$NInvalid $SOURCE_DIRECTORY."
     exit 1
 else
-    echo "$SOURCE_DIRECTORY is Valid"
+    echo -e "$SOURCE_DIRECTORY is $G Valid $N"
 fi
 
 echo "Please enter DESTINATION_DIRECTORY"
@@ -28,8 +28,8 @@ read DESTINATION_DIRECTORY
 
 if [ ! -d $DESTINATION_DIRECTORY ]
 then
-    echo "$R ERROR..$N Invalid $DESTINATION_DIRECTORY."
+    echo -e "$R ERROR..$N Invalid $DESTINATION_DIRECTORY."
     exit 1
 else
-    echo "$DESTINATION_DIRECTORY is Valid"
+    echo -e "$DESTINATION_DIRECTORY is $G Valid $N"
 fi
