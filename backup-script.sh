@@ -10,8 +10,8 @@ N="\e[0m" # No colour
 echo "Please enter Source and Destination to save the files"
 
 echo "Please enter Source_Directory"
-read -s SOURCE_DIRECTORY
+read SOURCE_DIRECTORY
 
 echo "Please enter Destination Directory"
-read -s DESTINATION_DIRECTORY
+read DESTINATION_DIRECTORY
 
