@@ -9,7 +9,7 @@ N="\e[0m" # No colour
 
 SOURCE_DIRECTORY=""
 DESTINATION_DIRECTORY=""
-TIMESTAMP=$($0-date.zip)
+TIMESTAMP=$($0-date)
 
 echo "Please enter Source and Destination to save the files"
 
@@ -42,5 +42,5 @@ FILES_TO_MOVE=$(find $SOURCE_DIRECTORY -type f)
 while IFS= read -r line
 do 
     echo "Moving files: $line"
-    mv $line /$DESTINATION_DIRECTORY/$TIMESTAMP
+    mv $line /$DESTINATION_DIRECTORY/$TIMESTAMP.zip
 done <<< $FILES_TO_MOVE
