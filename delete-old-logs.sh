@@ -40,7 +40,7 @@ then
     exit 1
 fi
 
-if [ -z "$DESTINATION_DIR" ] || [ "$ACTION" == "archive" ] # -z means if nothing given for DESTINATION_DIR
+if [ -z "$DESTINATION_DIR" ] && [ "$ACTION" == "archive" ] # -z means if nothing given for DESTINATION_DIR
 then
     echo -e "$R ERROR $N: -d is mandotory when -a is archive"
     USAGE
