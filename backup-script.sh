@@ -7,6 +7,9 @@ G="\e[32m" # Green colour
 Y="\e[33m" # Yellow colour
 N="\e[0m" # No colour
 
+SOURCE_DIRECTORY=""
+DESTINATION_DIRECTORY=""
+
 echo "Please enter Source and Destination to save the files"
 
 echo "Please enter SOURCE_DIRECTORY"
@@ -14,7 +17,7 @@ read SOURCE_DIRECTORY
 
 if [ ! -d $SOURCE_DIRECTORY ]
 then
-    echo "R ERROR..$NInvalid $SOURCE_DIRECTORY."
+    echo "$R ERROR..$NInvalid $SOURCE_DIRECTORY."
     exit 1
 else
     echo "$SOURCE_DIRECTORY is Valid"
