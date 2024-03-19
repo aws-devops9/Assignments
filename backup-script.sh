@@ -42,5 +42,5 @@ FILES_TO_MOVE=$(find $SOURCE_DIRECTORY -type f)
 while IFS= read -r line
 do 
     echo "Moving files: $line"
-    mv $line /$DESTINATION_DIRECTORY/
+    mv $line /$DESTINATION_DIRECTORY/$line.zip
 done <<< $FILES_TO_MOVE
