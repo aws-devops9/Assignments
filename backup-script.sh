@@ -9,6 +9,7 @@ N="\e[0m" # No colour
 
 SOURCE_DIRECTORY=""
 DESTINATION_DIRECTORY=""
+TIMESTAMP=$($0-date.zip)
 
 echo "Please enter Source and Destination to save the files"
 
@@ -33,3 +34,13 @@ then
 else
     echo -e "$DESTINATION_DIRECTORY is $G Valid $N"
 fi
+
+# Compressing the logs from source directory 
+
+FILES_TO_MOVE=$(find $SOURCE_DIRECTORY -type f)
+
+while IFS= read -r line
+do 
+    echo "Moving files: $line"
+    mv $line /$DESTINATION_DIRECTORY/$TIMESTAMP
+done <<< $FILES_TO_MOVE
