@@ -9,9 +9,24 @@ N="\e[0m" # No colour
 
 echo "Please enter Source and Destination to save the files"
 
-echo "Please enter Source_Directory"
+echo "Please enter SOURCE_DIRECTORY"
 read SOURCE_DIRECTORY
 
-echo "Please enter Destination Directory"
+if [ ! -d $SOURCE_DIRECTORY ]
+then
+    echo "R ERROR..$NInvalid $SOURCE_DIRECTORY."
+    exit 1
+else
+    echo "$SOURCE_DIRECTORY is Valid"
+fi
+
+echo "Please enter DESTINATION_DIRECTORY"
 read DESTINATION_DIRECTORY
 
+if [ ! -d $DESTINATION_DIRECTORY ]
+then
+    echo "$R ERROR..$N Invalid $DESTINATION_DIRECTORY."
+    exit 1
+else
+    echo "$DESTINATION_DIRECTORY is Valid"
+fi
