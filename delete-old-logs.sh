@@ -17,11 +17,12 @@ USAGE(){
     echo " -s, Specify the SOURCE_DIR (mandotary)"
     echo " -t, Specify the number of DAYS, ex: 10"
     echo " -a, Specify the ACTION, ex: Delete or Archine"
+    echo " -d, Specify the DESTINATION_DIR when you choose Archive action (mandotory)."
     echo " -h, Display help and Exit"
 
 }
 
-while getopts ":s:s:a:h" opt; do
+while getopts ":s:t:a:d:h" opt; do
     case $opt in
         s) SOURCE_DIR="$OPTARG";;
         t) DAYS="$OPTARG";;
@@ -33,27 +34,33 @@ while getopts ":s:s:a:h" opt; do
     esac
 done
 
-if [ -z "$SOURCE_DIR" ] || [ -z $ACTION ] # -z means if nothing given for Name
+if [ ! -d $SOURCE_DIR ]
 then
-    echo -e "$R ERROR $N: Both -s and -a is mandotory"
+    echo -e "Source Directory $R..$SOURCE_DIR $R does not exist $N"
+    exit 1
+fi
+
+if [ -z "$DESTINATION_DIR" ] || [ "$ACTION" == "archive" ] # -z means if nothing given for DESTINATION_DIR
+then
+    echo -e "$R ERROR $N: -d is mandotory when -a is archive"
     USAGE
     exit 1
 fi 
-if [ $ACTION == "delete" ]
+if [ "$ACTION" == "delete" ]
 then 
-    FILES_TO_DELETE=$(find $SOURCE_DIR -type f -mtime +15 -name "*.log")
+    FILES_TO_DELETE=$(find $SOURCE_DIR -type f -mtime +$DAYS -name "*.log")
 
  while IFS= read -r line # It will read the lines line by line # IFS is Internal Field Separator
  do
-    echo "Deleting file: $line"
+    echo "Deleting files: $line"
     rm -rf $line # It will delete the files line by line
  done <<< $FILES_TO_DELETE #We are giving Files_TO_DeELETE output as an input to while loop here
 else
-    FILES_TO_ARCHIVE=$(find $SOURCE_DIR -type f -mtime +15 -name "*.log")
+    FILES_TO_ARCHIVE=$(find $SOURCE_DIR -type f -mtime +$DAYS -name "*.log")
 
  while IFS= read -r line # It will read the lines line by line # IFS is Internal Field Separator
  do
-    echo "Archiving file: $line"
+    echo "Archiving files: $line"
     zip -r "$DESTINATION_DIR/$(basename "$line").zip" # It will archive the files line by line
  done <<< $FILES_TO_ARCHIVE
 fi
