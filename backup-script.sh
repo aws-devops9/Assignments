@@ -9,7 +9,7 @@ N="\e[0m" # No colour
 
 SOURCE_DIRECTORY=""
 DESTINATION_DIRECTORY=""
-TIMESTAMP=$($0-date)
+TIMESTAMP=$($0-date.zip)
 
 echo "Please enter Source and Destination to save the files"
 
